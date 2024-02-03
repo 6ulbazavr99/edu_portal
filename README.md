@@ -6,6 +6,6 @@ dbdiagram: https://dbdiagram.io/d/edu_portal-65bdd2ddac844320ae5a76d9
 
 github: https://github.com/6ulbazavr99/edu_portal
 
-postman: 
+postman: - 
 
 TODO: edu_portal/config/drf_swagger.py/schema_view/description
