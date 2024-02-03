@@ -38,9 +38,9 @@ user: sers, perms
 #
 #
 ############### <edu:
-subject: starter model, view, ser, urls, admin
-lesson: starter model, view, ser, urls, admin
-test: starter model, view, ser, urls, admin
+subject: starter model, view, ser, urls, admin +
+lesson: starter model, view, ser, urls, admin +
+test: starter model, view, ser, urls, admin +
 ############### :edu>
 #
 #

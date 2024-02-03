@@ -2,10 +2,11 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from account.views import CustomUserViewSet
+from account.views import CustomUserViewSet, GradeViewSet
 
 router = routers.DefaultRouter()
-router.register(r'', CustomUserViewSet)
+router.register(r'user', CustomUserViewSet, basename='user')
+# router.register(r'grade', GradeViewSet, basename='grade')
 
 
 urlpatterns = [
