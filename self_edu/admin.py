@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import UserSubject, UserLesson, UserTest
+
+admin.site.register(UserSubject)
+admin.site.register(UserLesson)
+admin.site.register(UserTest)

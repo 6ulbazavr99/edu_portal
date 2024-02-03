@@ -46,9 +46,9 @@ test: starter model, view, ser, urls, admin +
 #
 #
 ############### <self_edu:
-usersubject: starter model, view, ser, urls, admin
-userlesson: starter model, view, ser, urls, admin
-usertest: starter model, view, ser, urls, admin
+usersubject: starter model, view, ser, urls, admin +
+userlesson: starter model, view, ser, urls, admin +
+usertest: starter model, view, ser, urls, admin +
 ############### :self_edu>
 #
 #

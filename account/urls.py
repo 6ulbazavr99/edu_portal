@@ -6,12 +6,12 @@ from account.views import CustomUserViewSet, GradeViewSet
 
 router = routers.DefaultRouter()
 router.register(r'user', CustomUserViewSet, basename='user')
-# router.register(r'grade', GradeViewSet, basename='grade')
+router.register(r'grade', GradeViewSet, basename='grade')
 
 
 urlpatterns = [
-    path('authorization/login/', TokenObtainPairView.as_view()),
-    path('authorization/refresh/', TokenRefreshView.as_view()),
+    path('user/authorization/login/', TokenObtainPairView.as_view()),
+    path('user/authorization/refresh/', TokenRefreshView.as_view()),
 
 ]
 
