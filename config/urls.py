@@ -33,9 +33,9 @@ from .drf_swagger import urlpatterns as doc_urls
 # router.register(r'api/v1/lesson', LessonViewSet, basename='lesson')
 # router.register(r'api/v1/test', TestViewSet, basename='test')
 #
-# router.register(r'api/v1/usersubject', UserSubjectViewSet, basename='usersubject')
-# router.register(r'api/v1/userlesson', UserLessonViewSet, basename='userlesson')
-# router.register(r'api/v1/usertest', UserTestViewSet, basename='usertest')
+# router.register(r'api/v1/user-subject', UserSubjectViewSet, basename='user-subject')
+# router.register(r'api/v1/user-lesson', UserLessonViewSet, basename='user-lesson')
+# router.register(r'api/v1/user-test', UserTestViewSet, basename='user-test')
 
 
 urlpatterns = [
