@@ -19,16 +19,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+
+from account.views import GradeViewSet
 from .drf_swagger import urlpatterns as doc_urls
 
 
 router = routers.DefaultRouter()
-# router.register(r'api/v1/', , basename='')
+router.register(r'api/v1/grade', GradeViewSet, basename='grade')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/v1//', include('.urls')),
+    path('api/v1/account/', include('account.urls')),
 ]
 
 urlpatterns += router.urls

@@ -13,29 +13,34 @@ schema_view = get_schema_view(
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 1. admin[1]
-Bearer 
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQzMjMxLCJpYXQiOjE3MDY5NDgwMzEsImp0aSI6ImY1MTg0NTI4NjdhYjQ1YzE4YzRkYmIwYzI5MWNiNWJmIiwidXNlcl9pZCI6MX0.RL9ZIPK4_EWdw_EF6d5ALqPflD7wkXCeyeEvPZrbRZs
 
 2. andrey[bastard123]
-Bearer 
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQzMjcxLCJpYXQiOjE3MDY5NDgwNzEsImp0aSI6IjczOWY1MDlkOWNjYTQ0MTk4MWUxZDBiZjM2OTAxNDRlIiwidXNlcl9pZCI6Mn0.xoK2wXrRpiretVJGMefrGJ0LWrgxtMRihE_WnmXBs3U
             
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #
 #
 #
 ############### <account:
-
+customuser: starter model, view, ser, urls, admin +
+grade: starter model, view, ser, urls, admin +
 ############### :account>
 #
 #
 #
 ############### <edu:
-
+subject: starter model, view, ser, urls, admin
+lesson: starter model, view, ser, urls, admin
+test: starter model, view, ser, urls, admin
 ############### :edu>
 #
 #
 #
 ############### <self_edu:
-
+usersubject: starter model, view, ser, urls, admin
+userlesson: starter model, view, ser, urls, admin
+usertest: starter model, view, ser, urls, admin
 ############### :self_edu>
 #
 #
@@ -44,9 +49,15 @@ Bearer
 #
 #
 #
-############### <templates:
-
-############### :templates>
+############### <user reg:
+#
+{
+  "username": "andrey",
+  "password": "bastard123",
+  "password_confirmation": "bastard123"
+}
+#
+############### :user reg>
 #
 #
 #
