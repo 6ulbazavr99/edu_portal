@@ -21,11 +21,20 @@ from django.urls import path, include
 from rest_framework import routers
 
 from account.views import GradeViewSet
+from edu.views import SubjectViewSet, LessonViewSet, TestViewSet
 from .drf_swagger import urlpatterns as doc_urls
 
 
 router = routers.DefaultRouter()
 router.register(r'api/v1/grade', GradeViewSet, basename='grade')
+router.register(r'api/v1/subject', SubjectViewSet, basename='subject')
+router.register(r'api/v1/lesson', LessonViewSet, basename='lesson')
+router.register(r'api/v1/test', TestViewSet, basename='test')
+
+urlpatterns = [
+]
+
+urlpatterns += router.urls
 
 
 urlpatterns = [
