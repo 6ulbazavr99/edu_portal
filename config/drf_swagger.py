@@ -12,17 +12,17 @@ schema_view = get_schema_view(
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-1. admin[1]
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQzMjMxLCJpYXQiOjE3MDY5NDgwMzEsImp0aSI6ImY1MTg0NTI4NjdhYjQ1YzE4YzRkYmIwYzI5MWNiNWJmIiwidXNlcl9pZCI6MX0.RL9ZIPK4_EWdw_EF6d5ALqPflD7wkXCeyeEvPZrbRZs
+1. admin[1] +
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTUyODIyLCJpYXQiOjE3MDY5NTc2MjIsImp0aSI6ImZlODEwNWJiZjg4MjQ2ODE5OTgwZDU5NGQxYjkyNjY5IiwidXNlcl9pZCI6MX0.lLr35I2rkMWY5hCEt66UNwP_IMu6AK6XfBwSTbFPF5Y
 
-2. andrey[bastard123]
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQzMjcxLCJpYXQiOjE3MDY5NDgwNzEsImp0aSI6IjczOWY1MDlkOWNjYTQ0MTk4MWUxZDBiZjM2OTAxNDRlIiwidXNlcl9pZCI6Mn0.xoK2wXrRpiretVJGMefrGJ0LWrgxtMRihE_WnmXBs3U
+2. andrey[bastard123] +
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTU4OTMxLCJpYXQiOjE3MDY5NjM3MzEsImp0aSI6ImM0ZTU2OTAzOGMyNjRjYzdiZWU2Zjg0NTE2MmMyMDZlIiwidXNlcl9pZCI6Mn0.KXAXDQhRU-0nvS8I8NdXNMnCiKrVzKLNEfej0apThnA
 
-3. oleg[bastard123]
-Bearer 
+3. oleg[bastard123] +
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQ4ODYxLCJpYXQiOjE3MDY5NTM2NjEsImp0aSI6IjRkZDAzMzg3NzYwMDQ3MzVhODNhZDQxY2NjMWNmNTA1IiwidXNlcl9pZCI6M30.Hu78ge0vmTRfcg-HU0IPeszrOWaHgRHHJDZ7PF2C3N4
 
-4. sanya[bastard123]
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMTQzNDk3LCJpYXQiOjE3MDY5NDgyOTcsImp0aSI6ImU3MGQxYWEwZWY2NTRmYjk5ZjJjNWE1MGM2ZTQ0YTQ5IiwidXNlcl9pZCI6NH0.R_DMCeBagwThnt_t4yoRW5HavGvUeQP0lE2PBRYZEdQ            
+4. sanya[bastard123] -
+Bearer             
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #
@@ -33,6 +33,7 @@ customuser: starter model, view, ser, urls, admin +
 grade: starter model, view, ser, urls, admin +
 user: auth +
 user: sers, perms
+grade: sers, perms
 ############### :account>
 #
 #
@@ -41,6 +42,9 @@ user: sers, perms
 subject: starter model, view, ser, urls, admin +
 lesson: starter model, view, ser, urls, admin +
 test: starter model, view, ser, urls, admin +
+subject: sers, perms
+lesson: sers, perms
+test: sers, perms
 ############### :edu>
 #
 #
@@ -49,6 +53,11 @@ test: starter model, view, ser, urls, admin +
 usersubject: starter model, view, ser, urls, admin +
 userlesson: starter model, view, ser, urls, admin +
 usertest: starter model, view, ser, urls, admin +
+userlesson: new model +
+usertest: new model +
+usersubject: sers, perms
+userlesson: sers, perms
+usertest: sers, perms
 ############### :self_edu>
 #
 #
