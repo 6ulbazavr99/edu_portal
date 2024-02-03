@@ -12,11 +12,14 @@ class Grade(models.Model):
 
 
 class CustomUser(AbstractUser):
-    # grade = models.ForeignKey(
-    #     Grade,
-    #     on_delete=models.CASCADE,
-    #     verbose_name=_("Класс/уровень обучения")
-    # )
+    grade = models.ForeignKey(
+        Grade,
+        on_delete=models.CASCADE,
+        verbose_name=_("Класс/уровень обучения"),
+        related_name="users",
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.username
