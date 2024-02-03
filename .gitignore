@@ -468,6 +468,7 @@ pip-selfcheck.json
 media
 static
 venv
+.venv
 .env
 **/migrations/*        # !!!
 !**/migrations/__init__.py        # !!!
