@@ -7,3 +7,4 @@ django-filter
 django-ckeditor
 djangorestframework-simplejwt
 pillow
+django-cors-headers

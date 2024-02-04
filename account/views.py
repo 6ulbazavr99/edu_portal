@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from account.models import Grade
 from account.permissions import IsAccountOwnerOrAdmin
 from account.serializers import CustomUserSerializer, GradeSerializer, CustomUserRegisterSerializer, \
-    CustomUserRetrieveSerializer, CustomUserListSerializer
+    CustomUserRetrieveSerializer, CustomUserListSerializer, ProfileSerializer  # , ProfileSerializer
 
 User = get_user_model()
 
@@ -38,3 +40,11 @@ class CustomUserViewSet(viewsets.ModelViewSet):
         if self.action == 'create':
             return [AllowAny()]
         return [IsAuthenticated()]
+
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = ProfileSerializer(request.user)
+        return Response(serializer.data)

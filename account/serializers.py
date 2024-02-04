@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 from account.models import Grade
 from edu.models import Lesson, Test
 from self_edu.models import UserSubject, UserLesson, UserTest
+from self_edu.serializers import UserSubjectSerializer, UserLessonSerializer, UserTestSerializer
 
 User = get_user_model()
 
@@ -15,6 +16,28 @@ class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
         fields = '__all__'
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='request.user')
+
+    class Meta:
+        model = User
+        fields = ('id', 'user', )
+
+    def to_representation(self, instance):
+        representation = super(ProfileSerializer, self).to_representation(instance)
+
+        user_subjects = UserSubjectSerializer(instance.user_subjects.all(), many=True).data
+        representation['user_subjects'] = user_subjects
+
+        user_lessons = UserLessonSerializer(instance.user_lessons.all(), many=True).data
+        representation['user_lesson'] = user_lessons
+
+        user_tests = UserTestSerializer(instance.user_tests.all(), many=True).data
+        representation['user_tests'] = user_tests
+
+        return representation
 
 
 class CustomUserSerializer(serializers.ModelSerializer):

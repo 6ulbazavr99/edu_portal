@@ -21,7 +21,7 @@ from django.urls import path, include
 from rest_framework import routers
 
 from account.views import GradeViewSet
-from edu.views import SubjectViewSet, LessonViewSet, TestViewSet
+from edu.views import SubjectViewSet, LessonViewSet, TestViewSet, AvailableSubjects
 from self_edu.views import UserSubjectViewSet, UserLessonViewSet, UserTestViewSet
 from .drf_swagger import urlpatterns as doc_urls
 
@@ -43,6 +43,8 @@ urlpatterns = [
     path('api/v1/account/', include('account.urls')),
     # path('api/v1/edu/', include('edu.urls')),
     # path('api/v1/self-edu/', include('self_edu.urls')),
+    # path('available-subjects/', AvailableSubjects.as_view(), name='available_subjects_by_grade'),
+
 ]
 
 urlpatterns += router.urls
