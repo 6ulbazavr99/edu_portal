@@ -34,6 +34,7 @@ grade: starter model, view, ser, urls, admin +
 user: auth +
 user: sers, perms
 grade: sers, perms
+user: auto self_edu +
 ############### :account>
 #
 #
@@ -45,6 +46,7 @@ test: starter model, view, ser, urls, admin +
 subject: sers, perms
 lesson: sers, perms
 test: sers, perms
+subject: perm +
 ############### :edu>
 #
 #
@@ -58,6 +60,7 @@ usertest: new model +
 usersubject: sers, perms
 userlesson: sers, perms
 usertest: sers, perms
+usertest: check_answers +
 ############### :self_edu>
 #
 #

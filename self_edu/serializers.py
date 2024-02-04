@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from edu.models import Lesson, Test
 from .models import UserSubject, UserLesson, UserTest
 
 
@@ -18,19 +17,10 @@ class UserSubjectSerializer(serializers.ModelSerializer):
             raise ValidationError("The user's grade does not correspond to the subject.")
         return attrs
 
-    def after_create(self, instance, validated_data):
-        lessons = Lesson.objects.filter(subject=validated_data['subject'])
-        for lesson in lessons:
-            UserLesson.objects.create(user=instance.user, lesson=lesson)
-            tests = Test.objects.filter(lesson=lesson)
-            for test in tests:
-                UserTest.objects.create(user=instance.user, test=test)
-        return instance
-
     def create(self, validated_data):
+        print('subject')
         validated_data['user'] = self.context['request'].user
         instance = super().create(validated_data)
-        self.after_create(instance, validated_data)
         return instance
 
 
@@ -42,6 +32,7 @@ class UserLessonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
+        print('lesson')
         validated_data['user'] = self.context['request'].user
         instance = super().create(validated_data)
         return instance

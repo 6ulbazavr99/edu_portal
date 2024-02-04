@@ -6,7 +6,7 @@ from account.views import CustomUserViewSet, GradeViewSet
 
 router = routers.DefaultRouter()
 router.register(r'user', CustomUserViewSet, basename='user')
-router.register(r'grade', GradeViewSet, basename='grade')
+# router.register(r'grade', GradeViewSet, basename='grade')
 
 
 urlpatterns = [

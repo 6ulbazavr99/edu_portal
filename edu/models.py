@@ -2,12 +2,12 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from account.models import Grade
+# from account.models import Grade
 
 
 class Subject(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Название предмета"))
-    grades = models.ManyToManyField(Grade, verbose_name=_("Классы/уровни обучения"))
+    grades = models.ManyToManyField('account.Grade', verbose_name=_("Классы/уровни обучения"))
     description = RichTextField(verbose_name=_("Описание предмета"), blank=True, null=True)
 
     def __str__(self):

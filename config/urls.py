@@ -26,26 +26,26 @@ from self_edu.views import UserSubjectViewSet, UserLessonViewSet, UserTestViewSe
 from .drf_swagger import urlpatterns as doc_urls
 
 
-# router = routers.DefaultRouter()
-# router.register(r'api/v1/grade', GradeViewSet, basename='grade')
-#
-# router.register(r'api/v1/subject', SubjectViewSet, basename='subject')
-# router.register(r'api/v1/lesson', LessonViewSet, basename='lesson')
-# router.register(r'api/v1/test', TestViewSet, basename='test')
-#
-# router.register(r'api/v1/user-subject', UserSubjectViewSet, basename='user-subject')
-# router.register(r'api/v1/user-lesson', UserLessonViewSet, basename='user-lesson')
-# router.register(r'api/v1/user-test', UserTestViewSet, basename='user-test')
+router = routers.DefaultRouter()
+router.register(r'api/v1/grade', GradeViewSet, basename='grade')
+
+router.register(r'api/v1/subject', SubjectViewSet, basename='subject')
+router.register(r'api/v1/lesson', LessonViewSet, basename='lesson')
+router.register(r'api/v1/test', TestViewSet, basename='test')
+
+router.register(r'api/v1/user-subject', UserSubjectViewSet, basename='user-subject')
+router.register(r'api/v1/user-lesson', UserLessonViewSet, basename='user-lesson')
+router.register(r'api/v1/user-test', UserTestViewSet, basename='user-test')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/account/', include('account.urls')),
-    path('api/v1/edu/', include('edu.urls')),
-    path('api/v1/self-edu/', include('self_edu.urls')),
+    # path('api/v1/edu/', include('edu.urls')),
+    # path('api/v1/self-edu/', include('self_edu.urls')),
 ]
 
-# urlpatterns += router.urls
+urlpatterns += router.urls
 
 urlpatterns += doc_urls  # swagger docs urls
 

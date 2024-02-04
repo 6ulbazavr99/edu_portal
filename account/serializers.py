@@ -4,7 +4,8 @@ from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 
 from account.models import Grade
-
+from edu.models import Lesson, Test
+from self_edu.models import UserSubject, UserLesson, UserTest
 
 User = get_user_model()
 
@@ -29,7 +30,7 @@ class CustomUserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'password_confirmation', 'grade')
+        fields = ('id', 'username', 'password', 'password_confirmation', 'grade', 'subjects')
 
     def validate(self, attrs):
         password = attrs['password']
@@ -40,5 +41,20 @@ class CustomUserRegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
-        return user
+        subjects = validated_data['subjects']
+        instance = super().create(validated_data)
+        validated_data['subjects'] = subjects
+        self.after_create(instance, validated_data)
+        return instance
+
+    def after_create(self, instance, validated_data):
+        subjects = validated_data['subjects']
+        for subject in subjects:
+            UserSubject.objects.create(user=instance, subject=subject)
+            lessons = Lesson.objects.filter(subject=subject)
+            for lesson in lessons:
+                UserLesson.objects.create(user=instance, lesson=lesson)
+                tests = Test.objects.filter(lesson=lesson)
+                for test in tests:
+                    UserTest.objects.create(user=instance, test=test)
+        return instance

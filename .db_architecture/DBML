@@ -1,4 +1,4 @@
-// v.1
+// v.2
 
 // Таблица User - Хранит информацию о пользователях.
 Table User {
@@ -51,13 +51,15 @@ Table UserSubject {
   subject int [ref: > Subject.id] // Ссылка на идентификатор предмета
   progress percent [default: 0] // Прогресс пользователя по предмету
   status bool [default: False] // Статус завершенности предмета пользователем
+  subjects list  // Предметы выбранные пользователем при регистрации
 }
 
 // Таблица UserLesson - Связывает пользователей с уроками и отслеживает их прогресс.
 Table UserLesson {
   id int                      // Уникальный идентификатор записи
   app self_edu                // Приложение, к которому принадлежит запись
-  subject id [ref: < UserSubject.id] // Ссылка на идентификатор связи пользователя с предметом
+  user int [ref: > User.id]   // Ссылка на идентификатор пользователя
+  lesson id [ref: > Lesson.id] // Ссылка на идентификатор урока
   progress percent [default: 0] // Прогресс пользователя по уроку
   status bool [default: False] // Статус завершенности урока пользователем
 }
@@ -66,7 +68,8 @@ Table UserLesson {
 Table UserTest {
   id int                      // Уникальный идентификатор записи
   app self_edu                // Приложение, к которому принадлежит запись
-  lesson id [ref: < UserLesson.id] // Ссылка на идентификатор связи пользователя с уроком
+  user int [ref: > User.id]   // Ссылка на идентификатор пользователя
+  test id [ref: > Test.id] // Ссылка на идентификатор теста
   user_answers list           // Список ответов пользователя
   status bool [default: False] // Статус завершенности теста пользователем
 }
