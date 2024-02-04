@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -14,7 +14,7 @@ class SubjectViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ('retrieve', 'list'):
-            return [IsAuthenticated()]
+            return [AllowAny()]
         return [IsAdminUser()]
 
 

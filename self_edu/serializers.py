@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from edu.models import Test
 from .models import UserSubject, UserLesson, UserTest
 
@@ -12,10 +11,8 @@ class UserSubjectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        print('subject')
         validated_data['user'] = self.context['request'].user
-        instance = super().create(validated_data)
-        return instance
+        return super().create(validated_data)
 
 
 class UserLessonSerializer(serializers.ModelSerializer):
@@ -26,10 +23,8 @@ class UserLessonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        print('lesson')
         validated_data['user'] = self.context['request'].user
-        instance = super().create(validated_data)
-        return instance
+        return super().create(validated_data)
 
 
 class UserTestSerializer(serializers.ModelSerializer):
@@ -38,7 +33,7 @@ class UserTestSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserTest
         fields = '__all__'
-        read_only_fields = ('status',)
+        read_only_fields = ('status', 'test')
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
@@ -78,39 +73,54 @@ class UserTestSerializer(serializers.ModelSerializer):
         return instance
 
     def update_lesson_and_subject_progress(self, user_test_instance, status):
-        user_lesson = UserLesson.objects.get(user=user_test_instance.user, lesson=user_test_instance.test.lesson)
+        user_lesson, created = UserLesson.objects.get_or_create(
+            user=user_test_instance.user,
+            lesson=user_test_instance.test.lesson,
+            defaults={'progress': 0}
+        )
 
         if status:
-            if self.all_lessons_tests_passed(user_lesson):
-                user_lesson.progress = 100
-                user_lesson.status = True
-            else:
-                user_lesson.progress += 1
-        user_lesson.save()
+            total_tests = user_lesson.lesson.tests.count()
+            progress_increment = 100 / total_tests if total_tests > 0 else 0
+            user_lesson.progress = min(user_lesson.progress + progress_increment, 100)
 
+            if self.all_lessons_tests_passed(user_lesson):
+                user_lesson.status = True
+
+        user_lesson.save()
         self.update_subject_progress(user_lesson)
 
     def all_lessons_tests_passed(self, user_lesson):
         lesson_tests = Test.objects.filter(lesson=user_lesson.lesson)
         return all(
-            UserTest.objects.filter(user=user_lesson.user, test=test, status=True).exists() for test in lesson_tests)
+            UserTest.objects.filter(user=user_lesson.user, test=test, status=True).exists() for test in lesson_tests
+        )
 
     def all_subject_lessons_completed(self, user, subject):
         user_lessons = UserLesson.objects.filter(user=user, lesson__subject=subject)
         return all(ul.status for ul in user_lessons)
 
     def update_subject_progress(self, user_lesson):
-        subject = user_lesson.lesson.subject
-        user_subject = UserSubject.objects.get(user=user_lesson.user, subject=subject)
+        user_subject, created = UserSubject.objects.get_or_create(
+            user=user_lesson.user,
+            subject=user_lesson.lesson.subject,
+            defaults={'progress': 0}
+        )
 
-        total_lessons = subject.lessons.count()
-        if total_lessons > 0:
-            total_progress = sum(
-                ul.progress for ul in UserLesson.objects.filter(user=user_lesson.user, lesson__subject=subject))
-            user_subject.progress = total_progress / total_lessons
-        else:
-            user_subject.progress = 0
+        total_lessons = user_lesson.lesson.subject.lessons.count()
+        total_progress = sum(
+            ul.progress for ul in UserLesson.objects.filter(
+                user=user_lesson.user,
+                lesson__subject=user_lesson.lesson.subject
+            )
+        )
+        user_subject.progress = total_progress / total_lessons if total_lessons > 0 else 0
 
-        user_subject.status = self.all_subject_lessons_completed(user_lesson.user, subject)
+        if self.all_subject_lessons_completed(user_lesson.user, user_lesson.lesson.subject):
+            user_subject.status = True
+
         user_subject.save()
+
+
+
 

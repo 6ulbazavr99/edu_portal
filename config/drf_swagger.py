@@ -13,16 +13,16 @@ schema_view = get_schema_view(
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 1. admin[1] +
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjM5OTk5LCJpYXQiOjE3MDcwNDQ3OTksImp0aSI6ImU2ZTFmNGY1NzZlNTQxZmNiZTMxNWRlN2ZjYzc0Y2JkIiwidXNlcl9pZCI6MX0.RBD887Sr3AuSYaYFWCv2BlnPZsmWHqb831hfevGc8j0
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjQ4MzMwLCJpYXQiOjE3MDcwNTMxMzAsImp0aSI6IjJiZjQ1M2ZkMzkwYjRjMzk5YTMxZjU0N2NmZjlmZjEwIiwidXNlcl9pZCI6MX0.S4GSu-mqDNCalAxo5z8jHceO006p1JZAjaI_BtwL22A
 
 2. andrey[bastard123] +
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjI4Mjk2LCJpYXQiOjE3MDcwMzMwOTYsImp0aSI6IjQ5NWUwNGU3NzE3YTRlZGViODY2YWQ5ZjBmNjlmMmUyIiwidXNlcl9pZCI6Mn0.S31Glog8UXIWa50jRTkOy9IjsPZaB01jwNO7j5zewsw
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjQ5ODExLCJpYXQiOjE3MDcwNTQ2MTEsImp0aSI6IjBiYmNlZWNjZjY4ZjQwYzhhYTE1ZDUyZDdiM2RlY2E2IiwidXNlcl9pZCI6M30.9XmTvCN8LAeZS6hUt58da-dKWnE7-cpum4Nws_PCd5Q
 
 3. oleg[bastard123] +
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjMwNTEzLCJpYXQiOjE3MDcwMzUzMTMsImp0aSI6IjUzNzRhY2Y2NDQyMDRjOWI4MzYxMzg2NjU0MTQ4OTZiIiwidXNlcl9pZCI6M30.T2LKW3YRd5A539WuhTawoXj3HOGY_eCpRkzkhTIEy3I
 
 4. sanya2[bastard123] +
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjMwODkzLCJpYXQiOjE3MDcwMzU2OTMsImp0aSI6IjRmYTA1NTM4MmFlNzQ5MmU4OWY0MTdjYjliN2IxYTcwIiwidXNlcl9pZCI6NH0.WiUaIGASD2CkW5Ls5QnBGFSHmjXtTdX9EL2pPyOpKDw          
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMzExMjUwNDA3LCJpYXQiOjE3MDcwNTUyMDcsImp0aSI6IjhkYzEyZDc1NGEyNDRiM2Q4NzcwOTNiMWQyYTE4YTM4IiwidXNlcl9pZCI6NH0.nSKLC20IgYpog6LX6bFo9pKaXiJuHuP55e_F0PbCssE          
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #
@@ -61,8 +61,8 @@ usersubject: sers, perms +
 userlesson: sers, perms +
 usertest: sers, perms +
 usertest: check_answers +
-usersubject: change status !!!!!!!
-userlesson: change status !!!!!!!
+usersubject: change status +
+userlesson: change status +
 ############### :self_edu>
 #
 #
