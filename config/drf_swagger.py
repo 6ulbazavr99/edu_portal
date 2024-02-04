@@ -32,8 +32,8 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhw
 customuser: starter model, view, ser, urls, admin +
 grade: starter model, view, ser, urls, admin +
 user: auth +
-user: sers, perms
-grade: sers, perms
+user: sers, perms +
+grade: sers, perms +
 user: auto self_edu +
 ############### :account>
 #
@@ -43,9 +43,9 @@ user: auto self_edu +
 subject: starter model, view, ser, urls, admin +
 lesson: starter model, view, ser, urls, admin +
 test: starter model, view, ser, urls, admin +
-subject: sers, perms
-lesson: sers, perms
-test: sers, perms
+subject: sers, perms +
+lesson: sers, perms +
+test: sers, perms +
 subject: perm +
 ############### :edu>
 #
@@ -57,10 +57,12 @@ userlesson: starter model, view, ser, urls, admin +
 usertest: starter model, view, ser, urls, admin +
 userlesson: new model +
 usertest: new model +
-usersubject: sers, perms
-userlesson: sers, perms
-usertest: sers, perms
+usersubject: sers, perms +
+userlesson: sers, perms +
+usertest: sers, perms +
 usertest: check_answers +
+usersubject: change status !!!!!!!
+userlesson: change status !!!!!!!
 ############### :self_edu>
 #
 #

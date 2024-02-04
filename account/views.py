@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import viewsets, generics
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,7 +7,8 @@ from rest_framework.views import APIView
 from account.models import Grade
 from account.permissions import IsAccountOwnerOrAdmin
 from account.serializers import CustomUserSerializer, GradeSerializer, CustomUserRegisterSerializer, \
-    CustomUserRetrieveSerializer, CustomUserListSerializer, ProfileSerializer  # , ProfileSerializer
+    CustomUserRetrieveSerializer, CustomUserListSerializer, ProfileSerializer
+
 
 User = get_user_model()
 
@@ -18,7 +19,7 @@ class GradeViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ('retrieve', 'list'):
-            return [IsAuthenticated()]
+            return [AllowAny()]
         return [IsAdminUser()]
 
 

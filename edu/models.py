@@ -2,8 +2,6 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# from account.models import Grade
-
 
 class Subject(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Название предмета"))
@@ -36,7 +34,7 @@ class Test(models.Model):
         related_name="tests"
     )
     questions = RichTextField(verbose_name=_("Текст вопросов"))
-    correct_answers = models.JSONField(verbose_name=_("Правильные ответы"))  # предполагаем, что ответы хранятся в формате JSON
+    correct_answers = models.JSONField(verbose_name=_("Правильные ответы"))
 
     def __str__(self):
         return f"Test for {self.lesson.topic}"

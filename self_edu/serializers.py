@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
 from edu.models import Test
 from .models import UserSubject, UserLesson, UserTest
@@ -11,8 +10,6 @@ class UserSubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserSubject
         fields = '__all__'
-
-    # Ваша реализация метода validate остается без изменений.
 
     def create(self, validated_data):
         print('subject')
@@ -88,14 +85,10 @@ class UserTestSerializer(serializers.ModelSerializer):
                 user_lesson.progress = 100
                 user_lesson.status = True
             else:
-                user_lesson.progress += 1  # Увеличить прогресс на 1, или на другое значение в зависимости от логики
+                user_lesson.progress += 1
         user_lesson.save()
 
         self.update_subject_progress(user_lesson)
-
-    # def all_lessons_tests_passed(self, user_lesson):
-    #     lesson_tests = Test.objects.filter(lesson=user_lesson.lesson)
-    #     return all(UserTest.objects.filter(user=user_lesson.user, test=test, status=True).exists() for test in lesson_tests)
 
     def all_lessons_tests_passed(self, user_lesson):
         lesson_tests = Test.objects.filter(lesson=user_lesson.lesson)

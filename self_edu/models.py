@@ -13,10 +13,6 @@ class UserSubject(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_("Пользователь"),
         related_name="user_subjects",
-
-        # blank=False, null=False, default=serializers.CurrentUserDefault()
-
-
     )
     subject = models.ForeignKey(
         Subject,

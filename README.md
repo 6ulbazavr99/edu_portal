@@ -9,3 +9,5 @@ github: https://github.com/6ulbazavr99/edu_portal
 postman: - 
 
 TODO: edu_portal/config/drf_swagger.py/schema_view/description
+
+server: http://34.42.42.56:8000/

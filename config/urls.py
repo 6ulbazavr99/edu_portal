@@ -41,9 +41,6 @@ router.register(r'api/v1/user-test', UserTestViewSet, basename='user-test')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/account/', include('account.urls')),
-    # path('api/v1/edu/', include('edu.urls')),
-    # path('api/v1/self-edu/', include('self_edu.urls')),
-    # path('available-subjects/', AvailableSubjects.as_view(), name='available_subjects_by_grade'),
 
 ]
 

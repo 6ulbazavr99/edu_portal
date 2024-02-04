@@ -29,8 +29,7 @@ SECRET_KEY = config_settings('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config_settings('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = config_settings('ALLOWED_HOSTS').split(' ')
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -50,8 +49,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'ckeditor',
 
-    'corsheaders',
-
     # my_apps
     'account',
     'edu',
@@ -67,9 +64,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'corsheaders.middleware.CorsMiddleware',
 
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+# ]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Authorization',
+    'Content-Type',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -208,10 +224,3 @@ SWAGGER_SETTINGS = {
     },
     'USE_SESSION_AUTH': False
 }
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8080",
-#     "http://127.0.0.1:9000",
-# ]

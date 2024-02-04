@@ -37,6 +37,7 @@ class TestViewSet(viewsets.ModelViewSet):
             return [IsAuthenticated()]
         return [IsAdminUser()]
 
+
 class AvailableSubjects(APIView):
     permission_classes = [IsAuthenticated]
 
