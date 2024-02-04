@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from rest_framework.exceptions import ValidationError
 
 from account.models import Grade
 from edu.models import Lesson, Test
@@ -38,11 +39,17 @@ class CustomUserRegisterSerializer(serializers.ModelSerializer):
         if password_confirmation != password:
             raise serializers.ValidationError(_('Пароли не совпадают'))
         validate_password(password)
+        user_grade = attrs['grade']
+        for subject in attrs['subjects']:
+            if user_grade not in subject.grades.all():
+                raise ValidationError("The user's grade does not correspond to the subject.")
         return attrs
 
     def create(self, validated_data):
         subjects = validated_data['subjects']
         instance = super().create(validated_data)
+        instance.set_password(validated_data['password'])
+        instance.save()
         validated_data['subjects'] = subjects
         self.after_create(instance, validated_data)
         return instance
