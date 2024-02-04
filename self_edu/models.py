@@ -28,7 +28,7 @@ class UserSubject(models.Model):
     status = models.BooleanField(default=False, verbose_name=_("Статус завершения"))
 
     def __str__(self):
-        return f"{self.user.username} - {self.subject.title} Progress: {self.progress}%"
+        return f"[{self.user.username}] {self.subject.title} Progress: {self.progress}%"
 
 
 class UserLesson(models.Model):
@@ -54,7 +54,7 @@ class UserLesson(models.Model):
     )
 
     def __str__(self):
-        return f"{self.lesson} - Progress: {self.progress}%"
+        return f"[{self.user.username}] {self.lesson} - Progress: {self.progress}%"
 
 
 class UserTest(models.Model):
@@ -77,4 +77,4 @@ class UserTest(models.Model):
     )
 
     def __str__(self):
-        return f"Test {self.test} - Completed: {'Yes' if self.status else 'No'}"
+        return f"[{self.user.username}] Test {self.test} - Completed: {'Yes' if self.status else 'No'}"

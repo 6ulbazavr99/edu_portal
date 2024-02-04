@@ -23,6 +23,19 @@ class CustomUserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CustomUserListSerializer(CustomUserSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'grade', 'subjects',)
+
+
+class CustomUserRetrieveSerializer(CustomUserSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'grade', 'subjects', 'first_name', 'last_name',
+                  'email', 'last_login', 'date_joined', 'is_superuser', )
+
+
 class CustomUserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(min_length=8, max_length=32,
                                      required=True, write_only=True)

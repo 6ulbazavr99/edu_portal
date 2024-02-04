@@ -4,7 +4,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from account.models import Grade
 from account.permissions import IsAccountOwnerOrAdmin
-from account.serializers import CustomUserSerializer, GradeSerializer, CustomUserRegisterSerializer
+from account.serializers import CustomUserSerializer, GradeSerializer, CustomUserRegisterSerializer, \
+    CustomUserRetrieveSerializer, CustomUserListSerializer
 
 User = get_user_model()
 
@@ -25,6 +26,10 @@ class CustomUserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'create':
             return CustomUserRegisterSerializer
+        if self.action == 'retrieve':
+            return CustomUserRetrieveSerializer
+        if self.action == 'list':
+            return CustomUserListSerializer
         return CustomUserSerializer
 
     def get_permissions(self):
